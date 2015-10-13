@@ -103,7 +103,7 @@ def get_weights_report(model_path=None,
     W = None
 
     try:
-        weights_view = model.get_weights_topo()
+        weights_view = model.get_topological_view()
         h = weights_view.shape[0]
     except NotImplementedError:
 
@@ -148,7 +148,7 @@ Original exception: """+str(e)))
         weights_view = dataset.get_weights_view(W)
         assert weights_view.shape[0] == h
     try:
-        hr, hc = model.get_weights_view_shape()
+        hr, hc = model.weights_view_shape()[:2]
     except NotImplementedError:
         hr = int(np.ceil(np.sqrt(h)))
         hc = hr
@@ -266,7 +266,7 @@ def get_binocular_greyscale_weights_report(model_path=None,
     W = None
 
     try:
-        weights_view = model.get_weights_topo()
+        weights_view = model.get_topological_view()
         h = weights_view.shape[0]
     except NotImplementedError:
 
@@ -319,7 +319,7 @@ Original exception: """+str(e)))
         weights_view = dataset.get_weights_view(W)
         assert weights_view.shape[0] == h
     try:
-        hr, hc = model.get_weights_view_shape()
+        hr, hc = model.weights_view_shape()[:2]
     except NotImplementedError:
         hr = int(np.ceil(np.sqrt(h)))
         hc = hr
